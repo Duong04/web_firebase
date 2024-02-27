@@ -1,0 +1,64 @@
+<h2>Category Management</h2>
+            <div class="d-flex justify-content-between py-3">
+              <div class="modal fade" id="create" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Create category</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="categories" class="form-label">Category name</label>
+                        <input type="text" class="form-control" id="categories" placeholder="Product name">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" id="create-category" class="btn btn-primary">Create</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#create">Create</button>
+              <form class="d-flex">
+                <input class="form-control me-2" style="border-radius: 5px;" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
+            <div class="content">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Category name</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     
+                    </tbody>
+                  </table>
+                  <div class="modal fade" id="update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Update category</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" class="form-control" id="category_id-2" aria-describedby="emailHelp">
+                          <div class="mb-3">
+                            <label for="categories-2" class="form-label">Category name</label>
+                            <input type="text" class="form-control" id="categories-2">
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="update-category">Update</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+  

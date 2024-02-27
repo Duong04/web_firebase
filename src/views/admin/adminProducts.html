@@ -1,0 +1,112 @@
+<h2>Products Management</h2>
+            <div class="d-flex justify-content-between py-3">
+              <div class="modal fade" id="create" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Create product</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="product-name" class="form-label">Product name</label>
+                            <input type="text" class="form-control" id="product-name" placeholder="Product name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="url-image" class="form-label">Url image</label>
+                            <input type="text" class="form-control" id="url-image" placeholder="Url image">
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="number" class="form-control" id="price" placeholder="Price">
+                        </div>
+                        <div class="mb-3">
+                            <label for="discount" class="form-label">Discount</label>
+                            <input type="number" class="form-control" id="discount" placeholder="Discount">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea name="" id="description" class="form-control" cols="30" rows="5" placeholder="Description"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="category_id" class="form-label">Category name</label>
+                            <select class="form-select" name="" id="category_id">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="create-product" class="btn btn-primary">Create</button>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#create">Create</button>
+                <form class="d-flex">
+                    <input class="form-control me-2" style="border-radius: 5px;" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="content">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Product name</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Initial price</th>
+                        <th scope="col">New price</th>
+                        <th scope="col">Discount</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                  </table>
+                  <div class="modal fade" id="update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Update product</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" class="form-control" id="product-id" aria-describedby="emailHelp">
+                            <div class="mb-3">
+                                <label for="product-name-2" class="form-label">Product name</label>
+                                <input type="text" class="form-control" id="product-name-2" placeholder="Product name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="url-image-2" class="form-label">Url image</label>
+                                <input type="text" class="form-control" id="url-image-2" placeholder="Url image">
+                            </div>
+                            <div class="mb-3">
+                                <label for="price-2" class="form-label">Price</label>
+                                <input type="number" class="form-control" id="price-2" placeholder="Price">
+                            </div>
+                            <div class="mb-3">
+                                <label for="discount-2" class="form-label">Discount</label>
+                                <input type="number" class="form-control" id="discount-2" placeholder="Discount">
+                            </div>
+                            <div class="mb-3">
+                                <label for="description-2" class="form-label">Description</label>
+                                <textarea name="" id="description-2" class="form-control" cols="30" rows="5" placeholder="Description"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="category_id" class="form-label">Category name</label>
+                                <select class="form-select" name="" id="category_id-2">
+    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="update-product">Update</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+  
