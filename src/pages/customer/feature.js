@@ -1,6 +1,6 @@
-import Header from "../../components/layouts/header";
-import Footer from "../../components/layouts/footer";
-import Container from  "../..//views/customer/feature.html";
+import Header from "../../components/layouts/header.js";
+import Footer from "../../components/layouts/footer.js";
+import Container from  "../..//views/customer/feature.html?raw";
 
 const Feature = () => {
     return (`

@@ -1,4 +1,4 @@
-import Products from '../../../src/views/admin/adminProducts.html';
+import Products from '../../../src/views/admin/adminProducts.html?raw';
 
 const adminProducts = () => Products;
 

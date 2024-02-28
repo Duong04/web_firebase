@@ -38,9 +38,7 @@ router.on('/feature', () => render(Feature(), app));
 
 router.on('/testimonial', () => render(Feature(), app));
 
-router.on('/productDetail', () => {
-    render(ProductDetail(), app);
-});
+router.on('/productdetail', () => render(ProductDetail(), app) );
 
 router.on('/adminCategories', async () => {
     render(Admin, app);

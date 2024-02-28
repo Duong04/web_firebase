@@ -13,13 +13,13 @@ function layoutProducts({name, price, new_price, image, discount}) {
                 <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
             </div>
             <div class="text-center p-4">
-                <a class="d-block h5 mb-2" href="">${name}</a>
+                <a class="d-block h5 mb-2" href="/productdetail" data-navigo>${name}</a>
                 <span class="text-primary me-1">$${Math.floor(new_price)+'.00'}</span>
                 <span class="text-body text-decoration-line-through">${discount > 0 ? '$'+Math.floor(price)+'.00' : ''}</span>
             </div>
             <div class="d-flex border-top">
                 <small class="w-50 text-center border-end py-2">
-                    <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                    <a class="text-body" href="/productdetail" data-navigo><i class="fa fa-eye text-primary me-2"></i>View detail</a>
                 </small>
                 <small class="w-50 text-center py-2">
                     <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>

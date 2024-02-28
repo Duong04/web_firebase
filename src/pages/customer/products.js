@@ -1,5 +1,5 @@
-import Header from "../../components/layouts/header";
-import Footer from "../../components/layouts/footer";
+import Header from "../../components/layouts/header.js";
+import Footer from "../../components/layouts/footer.js";
 import Container from "../../views/customer/product.html?raw";
 const Products = () => {
     return (`

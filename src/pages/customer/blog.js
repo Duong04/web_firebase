@@ -1,6 +1,6 @@
-import Header from "../../components/layouts/header";
-import Footer from "../../components/layouts/footer";
-import Container from  "../..//views/customer/blog.html";
+import Header from "../../components/layouts/header.js";
+import Footer from "../../components/layouts/footer.js";
+import Container from  "../..//views/customer/blog.html?raw";
 
 const Blog = () => {
     return (`
