@@ -1,15 +1,14 @@
 import Header from "../../components/layouts/header.js";
 import Footer from "../../components/layouts/footer.js";
-import Content from "../../views/customer/product-single.html?raw";
+import Container from  "../..//views/customer/cart.html?raw";
 
-const ProductDetail = () => {
+const Cart = () => {
     return (`
         ${Header()}
-        ${Content}
-        
+        ${Container}
         ${Footer()}
     `)
     ;
-};
+}
 
-export default ProductDetail;
+export default Cart;

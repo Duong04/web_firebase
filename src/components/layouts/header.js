@@ -44,8 +44,9 @@ const Header = () => `
                 <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
                     <small class="fa fa-user text-body"></small>
                 </a>
-                <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
+                <a class="position-relative btn-sm-square bg-white rounded-circle ms-3" href="/cart" data-navigo>
                     <small class="fa fa-shopping-bag text-body"></small>
+                    <span class="position-absolute text-white d-flex justify-content-center align-item-center rounded-circle" style="width: 18px; height: 18px; background-color: red; font-size: 0.7rem; top: -4px; right: -8px;">${JSON.parse(localStorage.getItem('cart')) != null ? JSON.parse(localStorage.getItem('cart')).length : 0}</span>
                 </a>
             </div>
         </div>

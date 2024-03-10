@@ -1,4 +1,5 @@
 import axios from "axios";
+import { addCartAll } from "./cart";
 
 const axios_ins = axios.create({
     baseURL: "https://my-project-29fd5-default-rtdb.firebaseio.com",
@@ -13,16 +14,21 @@ function layoutProducts({product_id,name, price, new_price, image, discount}) {
                 <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
             </div>
             <div class="text-center p-4">
-                <a href="/productdetail" data-navigo class="d-block h5 mb-2">${name}</a>
+                <a href="/productdetail?product_id=${product_id}" data-navigo class="d-block h5 mb-2">${name}</a>
                 <span class="text-primary me-1">$${Math.floor(new_price)+'.00'}</span>
                 <span class="text-body text-decoration-line-through">${discount > 0 ? '$'+Math.floor(price)+'.00' : ''}</span>
             </div>
             <div class="d-flex border-top">
                 <small class="w-50 text-center border-end py-2">
-                    <a href="/productdetail" class="text-body" data-navigo><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                    <a href="/productdetail?product_id=${product_id}" class="text-body" data-navigo><i class="fa fa-eye text-primary me-2"></i>View detail</a>
                 </small>
                 <small class="w-50 text-center py-2">
-                    <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
+                    <input value="${image}" type="hidden" class="product_image">
+					<input value="${product_id}" type="hidden" class="product_id">
+					<input value="${name}" type="hidden" class="product_name">
+					<input value="${new_price}" type="hidden" class="price">
+					<input value="1" type="hidden" class="quantity">
+                    <button style="border: none; background-color: #fff;" class="text-body add-to-cart"><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</button>
                 </small>
             </div>
         </div>
@@ -76,9 +82,10 @@ async function loadJuice() {
 }
 
 async function loadProducts() {
-    loadVegetables();
-    loadFruits();
-    loadJuice();
+    await loadVegetables();
+    await loadFruits();
+    await loadJuice();
+    addCartAll();
 }
 
 export default loadProducts;
