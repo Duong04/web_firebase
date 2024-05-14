@@ -6,7 +6,6 @@ const ProductDetail = () => {
     return (`
         ${Header()}
         ${Content}
-        
         ${Footer()}
     `)
     ;

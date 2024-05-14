@@ -14,13 +14,13 @@ function layoutProducts({product_id,name, price, new_price, image, discount}) {
                 <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
             </div>
             <div class="text-center p-4">
-                <a href="/productdetail?product_id=${product_id}" data-navigo class="d-block h5 mb-2">${name}</a>
+                <a href="/productdetail/${product_id}" data-navigo class="d-block h5 mb-2">${name}</a>
                 <span class="text-primary me-1">$${Math.floor(new_price)+'.00'}</span>
                 <span class="text-body text-decoration-line-through">${discount > 0 ? '$'+Math.floor(price)+'.00' : ''}</span>
             </div>
             <div class="d-flex border-top">
                 <small class="w-50 text-center border-end py-2">
-                    <a href="/productdetail?product_id=${product_id}" class="text-body" data-navigo><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                    <a href="/productdetail/${product_id}" class="text-body" data-navigo><i class="fa fa-eye text-primary me-2"></i>View detail</a>
                 </small>
                 <small class="w-50 text-center py-2">
                     <input value="${image}" type="hidden" class="product_image">

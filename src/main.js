@@ -42,9 +42,9 @@ router.on('/feature', () => render(Feature(), app));
 
 router.on('/testimonial', () => render(Testimonial(), app));
 
-router.on('/productdetail', () => {
+router.on('/productdetail/:id', (params) => {
     render(ProductDetail(), app);
-    getProductId();
+    getProductId(params.data.id);
 });
 
 router.on('/cart', () => {

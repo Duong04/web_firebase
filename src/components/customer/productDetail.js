@@ -79,6 +79,37 @@ function layoutHtml({product_id, name, description,  price, new_price, image, di
     `;
 }
 
+function layoutProducts({product_id,name, price, new_price, image, discount}) {
+    return `
+    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="product-item">
+            <div class="position-relative bg-light overflow-hidden">
+                <img class="img-fluid w-100" src="${image}" alt="">
+                <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
+            </div>
+            <div class="text-center p-4">
+                <a href="/productdetail/${product_id}" data-navigo class="d-block h5 mb-2">${name}</a>
+                <span class="text-primary me-1">$${Math.floor(new_price)+'.00'}</span>
+                <span class="text-body text-decoration-line-through">${discount > 0 ? '$'+Math.floor(price)+'.00' : ''}</span>
+            </div>
+            <div class="d-flex border-top">
+                <small class="w-50 text-center border-end py-2">
+                    <a href="/productdetail/${product_id}" class="text-body" data-navigo><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                </small>
+                <small class="w-50 text-center py-2">
+                    <input value="${image}" type="hidden" class="product_image">
+					<input value="${product_id}" type="hidden" class="product_id">
+					<input value="${name}" type="hidden" class="product_name">
+					<input value="${new_price}" type="hidden" class="price">
+					<input value="1" type="hidden" class="quantity">
+                    <button style="border: none; background-color: #fff;" class="text-body add-to-cart"><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</button>
+                </small>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
 function increasing() {
 	document.getElementById('increasing').onclick = () => {
 		let quantityElement = document.getElementById('quantity');
@@ -121,11 +152,33 @@ function reduce() {
 	}
 }
 
-async function getProductId() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('product_id');
+async function productSame(id) {
+	let response = await axios_ins.get(`/products.json`);
 
-    let response = await axios_ins.get(`/products/${productId}.json`);
+	let products = response.data;
+	let count = 0;
+    let maxProducts = 6;
+	let trstring = "";
+
+	for (let key in products) {
+		if (products.hasOwnProperty(key)) {
+			if (key != id) {
+				count++;
+				if (count >= maxProducts) {
+					break;
+				} 
+				trstring += layoutProducts(products[key]);
+			}
+		}
+	}
+
+	document.querySelector('#page-product-single').innerHTML = trstring;
+}
+
+
+async function getProductId(id) {
+
+    let response = await axios_ins.get(`/products/${id}.json`);
 
     let htmls = layoutHtml(response.data);
 
@@ -134,6 +187,7 @@ async function getProductId() {
 	addCart();
 	increasing();
 	reduce();
+	await productSame(id);
 }
 
 export default getProductId;
