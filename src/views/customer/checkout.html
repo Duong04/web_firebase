@@ -1,0 +1,99 @@
+<div
+    class="hero-wrap hero-bread"
+    style="
+        background-image: url('images/bg_1.jpg');
+        background-size: cover;
+        padding: 10rem 0;
+    "
+    >
+    <div class="container">
+        <div
+        class="row no-gutters slider-text align-items-center justify-content-center"
+        >
+        <div class="col-md-9 ftco-animate text-center">
+            <p class="breadcrumbs">
+            <span class="mr-2"><a href="/" data-navigo>Home</a></span>
+            <span>/ Chechout</span>
+            </p>
+            <h1 class="mb-0 bread">Checkout</h1>
+        </div>
+        </div>
+    </div>
+</div>
+<section class="checkout_area section_gap">
+    <form action="" data-navigo method="POST" class="container" id="checkout">
+        <div class="cupon_area">
+            <div class="check_title">
+                <h2>Have a coupon? <a href="#">Click here to enter your code</a></h2>
+            </div>
+            <input type="text" placeholder="Enter coupon code">
+            <a class="tp_btn" href="#">Apply Coupon</a>
+        </div>
+        <div class="billing_details">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3>Billing Details</h3>
+                    <div class="row contact_form" novalidate="novalidate">
+                        <div class="col-md-6 form-group p_star">
+                            <input required type="text" class="form-control" placeholder="First name" id="first" name="name">
+                            <span class="placeholder" data-placeholder="First name"></span>
+                        </div>
+                        <div class="col-md-6 form-group p_star">
+                            <input required type="text" class="form-control" placeholder="Last name" id="last" name="name">
+                            <span class="placeholder" data-placeholder="Last name"></span>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input required type="text" class="form-control" id="company" name="company" placeholder="Company name">
+                        </div>
+                        <div class="col-md-6 form-group p_star">
+                            <input type="text" class="form-control" id="number" placeholder="Phone number" name="number">
+                            <span class="placeholder" data-placeholder="Phone number"></span>
+                        </div>
+                        <div class="col-md-6 form-group p_star">
+                            <input required type="text" class="form-control" id="email" placeholder="Email Address" name="compemailany">
+                            <span class="placeholder" data-placeholder="Email Address"></span>
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                            <input required type="text" class="form-control" id="add1" placeholder="Address line 01" name="add1">
+                            <span class="placeholder" data-placeholder="Address line 01"></span>
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                            <input required type="text" class="form-control" id="add2" placeholder="Address line 02" name="add2">
+                            <span class="placeholder" data-placeholder="Address line 02"></span>
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                            <input required type="text" class="form-control" id="city" placeholder="Town/City" name="city">
+                            <span class="placeholder" data-placeholder="Town/City"></span>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input required type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <textarea class="form-control" name="message" id="message" rows="1" placeholder="Order Notes"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="order_box">
+                        <h2>Your Order</h2>
+                        <div><a href="#" class="w-100 d-flex justify-content-between">Product <span>Total</span></a></div>
+                        <ul class="list" id="listOrder">
+                            
+                        </ul>
+                        <ul class="list list_2">
+                            <li><a href="#">Subtotal <span id="subtotal"></span></a></li>
+                            <li><a href="#">Shipping <span>Flat rate: <span id="delivery"></span></span></a></li>
+                            <li><a href="#">Total <span id="total"></span></a></li>
+                        </ul>
+                        <div class="creat_account">
+                            <input required type="checkbox" id="f-option4" name="selector">
+                            <label for="f-option4">I’ve read and accept the </label>
+                            <a href="#">terms & conditions*</a>
+                        </div>
+                        <button class="primary-btn btn text-white w-100">Proceed</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

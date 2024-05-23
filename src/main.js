@@ -6,6 +6,7 @@ import Blog from './pages/customer/blog';
 import Feature from './pages/customer/feature';
 import Testimonial from './pages/customer/testimonial';
 import ProductDetail from './pages/customer/productDetail';
+import CheckoutPage from './pages/customer/checkout';
 import Cart from './pages/customer/cart';
 import NotFound from './pages/customer/notFound';
 import AdminCategories from './pages/admin/adminCategories';
@@ -18,6 +19,8 @@ import loadProducts from './components/customer/home';
 import loadProducts_2 from './components/customer/products';
 import getProductId from './components/customer/productDetail';
 import loadCart from './components/customer/cart';
+import loadOrder from './components/customer/checkout';
+import ThankPage from './pages/customer/thank';
 
 const app = document.querySelector('#app');
 
@@ -25,44 +28,37 @@ const app = document.querySelector('#app');
 router.on('/', async () => {
     render(HomePage(), app);
     await loadProducts();
-});
-
-router.on('/about', () => render(AboutUs(), app));
-
-router.on('/products', async () => {
-    render(Products(), app);
-    await loadProducts_2();
-});
-
-router.on('/contact', () => render(Contact(), app));
-
-router.on('/blog', () => render(Blog(), app));
-
-router.on('/feature', () => render(Feature(), app));
-
-router.on('/testimonial', () => render(Testimonial(), app));
-
-router.on('/productdetail/:id', (params) => {
-    render(ProductDetail(), app);
-    getProductId(params.data.id);
-});
-
-router.on('/cart', () => {
-    render(Cart(), app);
-    loadCart();
-});
-
-router.on('/adminCategories', async () => {
-    render(Admin, app);
-    document.getElementById('article').innerHTML = AdminCategories();
-    await getAllCategories();
-});
-
-router.on('/adminProducts', async () => {
-    render(Admin, app);
-    document.getElementById('article').innerHTML = AdminProducts();
-    await getAllProducts();
-});
+})
+    .on('/about', () => render(AboutUs(), app))
+    .on('/products', async () => {
+        render(Products(), app);
+        await loadProducts_2();
+    }).on('/contact', () => render(Contact(), app))
+    .on('/blog', () => render(Blog(), app))
+    .on('/feature', () => render(Feature(), app))
+    .on('/testimonial', () => render(Testimonial(), app))
+    .on('/productdetail/:id', (params) => {
+        render(ProductDetail(), app);
+        getProductId(params.data.id);
+    })
+    .on('/cart', () => {
+        render(Cart(), app);
+        loadCart();
+    })
+    .on('/checkout', () => {
+        render(CheckoutPage(), app);
+        loadOrder();
+    })
+    .on('/thanks', () => render(ThankPage(), app))
+    .on('/adminCategories', async () => {
+        render(Admin, app);
+        document.getElementById('article').innerHTML = AdminCategories();
+        await getAllCategories();
+    }).on('/adminProducts', async () => {
+        render(Admin, app);
+        document.getElementById('article').innerHTML = AdminProducts();
+        await getAllProducts();
+    });
 
 router.notFound(() => render(NotFound(), app));
 router.resolve();

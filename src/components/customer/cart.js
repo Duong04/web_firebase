@@ -171,7 +171,7 @@ function layoutTbody({ product_id, image, name, price, quantity }) {
 					class="product-remove d-flex align-items-center"
 					style="padding: 40px 10px"
 					>
-					<button style="border: none; background-color: #fff;" class="remove-cart" id="${product_id}"><i class="fa-solid fa-trash"></i></button>
+					<button style="border: none; background-color: #fff;" class="remove-cart text-danger" id="${product_id}"><i class="fa-solid fa-trash"></i></button>
 					</td>
 
 					<td class="image-prod">
@@ -189,18 +189,18 @@ function layoutTbody({ product_id, image, name, price, quantity }) {
 					<td class="price">$${Math.floor(price)}.00</td>
 
 					<td class="quantity">
-					<div class="input-group mb-3">
-            <button>-</button>
-						<input style="width: 80px;"
+					<div class="d-flex mb-3">
+            <button style="border: none;" class="fs-3 decreasing bg-white" data-product-id="${product_id}">-</button>
+						<input style="width: 50px;"
             id="quantity${product_id}"
-						type="number"
+						type="text"
 						name="quantity"
 						class="quantity form-control input-number"
 						value="${quantity}"
 						min="1"
 						max="100"
 						/>
-            <button class="increasing" data-product-id="${product_id}">+</button>
+            <button style="border: none;" class="fs-3 increasing bg-white" data-product-id="${product_id}">+</button>
 					</div>
 					</td>
 
@@ -210,27 +210,57 @@ function layoutTbody({ product_id, image, name, price, quantity }) {
 }
 
 function increasing() {
-  document.querySelectorAll('.increasing').forEach(item => {
-    item.onclick = async function() {
-      const product_id = this.getAttribute('data-product-id');
-      let cart = JSON.parse(localStorage.getItem('cart'));
-      let quantityInput = document.querySelector('#quantity' + product_id);
-      let totalTd = document.querySelector(`#total${product_id}`);
-    
+  document.querySelectorAll('.increasing').forEach(button => {
+    button.onclick = async function() {
+      const productId = this.getAttribute('data-product-id');
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let quantityInput = document.querySelector('#quantity' + productId);
+
       let quantity = parseInt(quantityInput.value);
-      quantityInput.value++;
       quantity++;
-    
-      cart.forEach(item => {
-        if (item.product_id === product_id) {
+      quantityInput.value = quantity;
+
+      cart = cart.map(item => {
+        if (item.product_id === productId) {
           item.quantity = quantity;
         }
+        return item;
       });
-    
+
       localStorage.setItem('cart', JSON.stringify(cart));
+
+      // Gọi loadCart để cập nhật giỏ hàng hiển thị mà không cần tải lại trang
       await loadCart();
     }
-  })
+  });
+}
+
+function decreasing() {
+  document.querySelectorAll('.decreasing').forEach(button => {
+    button.onclick = async function() {
+      const productId = this.getAttribute('data-product-id');
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let quantityInput = document.querySelector('#quantity' + productId);
+
+      let quantity = parseInt(quantityInput.value);
+      if (quantity > 1) {
+        quantity--;
+        quantityInput.value = quantity;
+
+        cart = cart.map(item => {
+          if (item.product_id === productId) {
+            item.quantity = quantity;
+          }
+          return item;
+        });
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Gọi loadCart để cập nhật giỏ hàng hiển thị mà không cần tải lại trang
+        await loadCart();
+      }
+    }
+  });
 }
 
 function removeCart() {
@@ -268,17 +298,17 @@ function removeCart() {
       loadCart();
     };
   });
-}
+} 
 
 async function loadCart() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
   if (cart.length > 0) {
     let delivery = 0; 
     let totalPrice = 0; 
     let subtotal = 0;
-    let total = 0;
     let discount = 0;
     let htmls = cart.map((item) => {
-      total = item.price * item.quantity;
+      let total = item.price * item.quantity;
       discount += item.quantity;
       subtotal += total;
       return layoutTbody(item);
@@ -286,17 +316,17 @@ async function loadCart() {
     delivery = subtotal > 100 ? 0 : 10;
     totalPrice = subtotal + delivery;
     document.querySelector("tbody").innerHTML = htmls;
-    document.getElementById('subtotal').innerText = '$'+Math.floor(subtotal)+'.00';
-    document.getElementById('delivery').innerText = '$'+delivery > 0 ? delivery+'.00' : 'Free Shipping';
+    document.getElementById('subtotal').innerText = '$' + Math.floor(subtotal) + '.00';
+    document.getElementById('delivery').innerText = delivery > 0 ? '$' + delivery + '.00' : 'Free Shipping';
     document.getElementById('discount').innerText = discount;
-    document.getElementById('total').innerText = '$'+Math.floor(totalPrice)+'.00';
+    document.getElementById('total').innerText = '$' + Math.floor(totalPrice) + '.00';
   } else {
     document.getElementById('cart-content').innerHTML = "<h2 class='text-center py-5'>Cart is empty!</h2>";
   }
 
   removeCart();
-  await increasing();
+  await increasing(); // Gán sự kiện cho các nút tăng số lượng
+  await decreasing(); // Gán sự kiện cho các nút giảm số lượng
 }
-
 export { addCart, addCartAll };
 export default loadCart;
